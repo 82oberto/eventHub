@@ -1,11 +1,11 @@
 ```mermaid
 flowchart TD
-    UI["🖥️ Angular SPA<br/>Seat map · Checkout · Live updates"]
+    UI["️ Angular SPA<br/>Seat map · Checkout · Live updates"]
     GW["API Gateway<br/>Spring Cloud Gateway · JWT"]
     KC["Keycloak<br/>Auth"]
 
     CAT["Catalog Service<br/>Events · Venues · Seat maps"]
-    BOOK["Booking Service ⭐<br/>Seat locking · Idempotency · Saga"]
+    BOOK["Booking Service <br/>Seat locking · Idempotency · Saga"]
     PAY["Payment Service<br/>Simulated payments"]
     NOTIF["Notification Service<br/>PDF tickets · Waiting list"]
 
