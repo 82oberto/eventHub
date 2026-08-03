@@ -2,6 +2,7 @@ package com.eventhub.catalog_service.controller;
 
 import com.eventhub.catalog_service.dto.CreateEventRequest;
 import com.eventhub.catalog_service.dto.EventResponse;
+import com.eventhub.catalog_service.dto.SeatResponse;
 import com.eventhub.catalog_service.repository.EventRepository;
 import com.eventhub.catalog_service.service.EventService;
 import jakarta.validation.Valid;
@@ -12,6 +13,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -38,5 +41,15 @@ public class EventController {
     @ResponseStatus(HttpStatus.CREATED)
     public EventResponse createEvent(@Valid @RequestBody CreateEventRequest request) {
         return eventService.create(request);
+    }
+
+    @GetMapping("/{id}/availability")
+    public Map<String, Long> getAvailability(@PathVariable UUID id) {
+        return Map.of("available", eventService.countAvailableSeats(id));
+    }
+
+    @GetMapping("/{id}/seats")
+    public List<SeatResponse> getSeats(@PathVariable UUID id) {
+        return eventService.getSeats(id);
     }
 }

@@ -16,7 +16,14 @@ public record EventResponse(
         EventStatus status
 ) {
     public static EventResponse from(Event e) {
-        return new EventResponse(e.getId(), e.getName(), e.getDescription(),
-                e.getVenueName(), e.getCity(), e.getEventDate(), e.getStatus());
+        return new EventResponse(
+                e.getId(),
+                e.getName(),
+                e.getDescription(),
+                e.getVenue().getName(),
+                e.getVenue().getCity(),
+                e.getEventDate(),
+                e.getStatus()
+        );
     }
 }

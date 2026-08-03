@@ -25,11 +25,9 @@ public class Event {
 
     private String description;
 
-    @Column(name = "venue_name", nullable = false)
-    private String venueName;
-
-    @Column(nullable = false)
-    private String city;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "venue_id")
+    private Venue venue;
 
     @Column(name = "event_date", nullable = false)
     private LocalDateTime eventDate;

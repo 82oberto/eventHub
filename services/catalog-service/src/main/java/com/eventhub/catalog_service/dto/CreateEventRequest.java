@@ -5,11 +5,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public record CreateEventRequest(
         @NotBlank String name,
         String description,
-        @NotBlank String venueName,
-        @NotBlank String city,
+        @NotNull UUID venueId,
         @NotNull @Future LocalDateTime eventDate
 ) {}
